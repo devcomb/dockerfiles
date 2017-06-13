@@ -7,7 +7,6 @@
 # Contributors:
 #   Tyler Jewell - Initial Implementation
 #
-
 # Initializes an empty directory with the templates needed to configure and run Che.
 #
 # build:
@@ -20,7 +19,7 @@
 #   docker run <puppet-mounts> --entrypoint=/usr/bin/puppet eclipse/che-init:<version> apply <puppet-apply-options>
 
 
-FROM puppet/puppet-agent-alpine:4.6.2
+FROM devcomb/arm64v8-puppet-agent-alpine:4.6.2
 
 # install openssh needed to generate ssh keys
 RUN apk --update add openssh \
