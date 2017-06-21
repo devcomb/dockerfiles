@@ -20,15 +20,15 @@
 #             -v /che-data:/data \
 #             eclipse/che-server-arm64v8:latest
 #           
-FROM eclipse/che-base-arm64v8
+FROM owlab/openjdk-arm64:8u101-jdk-alpine
 
 ENV LANG=C.UTF-8 \
     DOCKER_VERSION=1.6.0 \
     DOCKER_BUCKET=get.docker.com \
     CHE_IN_CONTAINER=true
 
-RUN echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
-    apk add --update curl openssl sudo bash && \
+RUN echo "http://dl-4.alpinelinux.org/alpine/v3.5/community" >> /etc/apk/repositories && \
+    apk add --allow-untrusted --update curl openssl sudo bash && \
 #   This image requires volume mounting host docker cliect example-> `-v /usr/bin/docker:/usr/bin/docker`
 #   curl -sSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-${DOCKER_VERSION}" -o /usr/bin/docker && \
 #   chmod +x /usr/bin/docker && \
@@ -40,3 +40,4 @@ EXPOSE 8000 8080
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 ADD eclipse-che.tar.gz /home/user/
+
