@@ -7,6 +7,7 @@
 # Contributors:
 #   Codenvy, S.A. - initial API and implementation
 #   Mario Loriedo
+#   James Drummond - ARM64 implementation
 #
 # build:
 #   docker build -t  eclipse/debian_jdk8:aarch64 .
