@@ -3,7 +3,7 @@
 if [ $KEYCLOAK_USER ] && [ $KEYCLOAK_PASSWORD ]; then
     wildfly/bin/add-user-keycloak.sh --user $KEYCLOAK_USER --password $KEYCLOAK_PASSWORD
 fi
-if [ $KEYCLOAK_HTTPS ] && [ ! -f /opt/jboss/wildfly/standalone/configuration/keycloak.jks ]; then
+if [ $KEYCLOAK_HTTPS  == "true" ] && [ ! -f /opt/jboss/wildfly/standalone/configuration/keycloak.jks ]; then
   if [ ! $KEYCLOAK_HTTPS_PASSWORD ]; then
     export KEYCLOAK_HTTPS_PASSWORD=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w30 | head -n1)
   fi
